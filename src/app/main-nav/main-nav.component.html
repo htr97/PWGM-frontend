@@ -1,0 +1,39 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>SGM</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/principal">
+          <mat-icon matPrefix>home</mat-icon>&nbsp;Inicio
+      </a>
+      <a mat-list-item routerLink="/inventory">
+        <mat-icon matPrefix>devices</mat-icon>&nbsp;Inventario
+      </a>
+      <a mat-list-item href="add-invItem">
+        <mat-icon matPrefix>build</mat-icon>&nbsp;Mantenimiento
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="warm">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+        <mat-icon matPrefix>search</mat-icon>&nbsp;
+        <input matInput type="search" placeholder="Buscar" class="search-input">
+        <span class="spacer"></span>
+        <a href="#"><mat-icon matPrefix>notifications</mat-icon></a>
+        <a href="#"><mat-icon matPrefix>search</mat-icon></a>
+        <a href="#"><mat-icon matPrefix>person</mat-icon></a>
+    </mat-toolbar>
+    <!-- <ng-content></ng-content> -->
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

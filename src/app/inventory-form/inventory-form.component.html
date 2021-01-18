@@ -1,0 +1,62 @@
+<form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
+  <h1 class="mat-h1" name="invName">Agregar mantenimiento</h1>
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <!-- <mat-card-title>Shipping Information</mat-card-title> -->
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-radio-group formControlName="tipoMantenimiento">
+            <mat-radio-button value="preventivo">Mantenimiento preventivo</mat-radio-button>
+            <mat-radio-button value="correctivo">Mantenimiento correctivo</mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width-select">
+            <mat-select placeholder="Equipo" formControlName="equipo">
+              <mat-option *ngFor="let equipo of equipo" [value]="equipo.name">
+                {{ equipo.name }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="addressForm.controls['equipo'].hasError('required')">
+              Seleccione un <strong>equipo</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width-select">
+            <mat-select placeholder="Departamento" formControlName="departamento">
+              <mat-option *ngFor="let departamento of departamento" [value]="departamento.name">
+                {{ departamento.name }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="addressForm.controls['departamento'].hasError('required')">
+              Seleccione un <strong>departamento</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Falla" formControlName="falla">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Descripcion de falla</mat-label>
+            <textarea matInput formControlName="descripcion"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit">Aceptar</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
