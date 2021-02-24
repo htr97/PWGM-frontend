@@ -24,6 +24,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MaintenanceFormComponent } from './maintenance-form/maintenance-form.component';
+import { MaintenanceOrdersComponent } from './maintenance-orders/maintenance-orders.component';
+
+import {HttpClientModule} from '@angular/common/http';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +36,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     MainNavComponent,
     InventoryViewComponent,
     PrincipalComponent,
-    InventoryFormComponent
+    InventoryFormComponent,
+    MaintenanceFormComponent,
+    MaintenanceOrdersComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +60,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatInputModule,
     MatSelectModule,
     MatRadioModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,8 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
 body {
-  background: #172B4D;
+  background: white;
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -25,25 +26,25 @@ body {
   margin-right: auto;
   margin-left: auto;
   border: 12px solid transparent;
-  border-bottom-color: #11CDEF;
+  border-bottom-color: #64DFDF;
 }
 
 .login-header {
-  background: #11CDEF;
+  background: #64DFDF;
   padding: 20px;
   font-size: 1.4em;
   font-weight: normal;
   text-align: center;
   text-transform: uppercase;
   color: #fff;
+  border-radius: 15px 15px 0 0;
 }
 
 .login-container {
-  background: white;
+  background: rgba(255, 255, 255, 0.4);
   padding: 12px;
-
+  border-radius: 0 0 15px 15px;
 }
-
 /* Row .login-container, has p tags */
 .login p {
   padding: 12px;
@@ -55,16 +56,16 @@ body {
   width: 100%;
   border-width: 1px;
   border-style: solid;
+  border-radius: 10px;
   padding: 16px;
   outline: 0;
   font-family: inherit;
   font-size: 0.95em;
 }
 
-.login input[type="email"],
-.login input[type="password"] {
+.login input {
   background: #fff;
-  border-color: #bbb;
+  border-color: rgba(255,255,255,0.5);
   color: #555;
 }
 
@@ -75,21 +76,40 @@ body {
 }
 
 .login input[type="submit"] {
-  background: #11CDEF;
+  background: #64DFDF;
   border-color: transparent;
   color: #fff;
   cursor: pointer;
+  border-radius: 50px;
 }
 
 .login input[type="submit"]:hover {
   border-color: white;
   background-color: white;
-  color: #11CDEF;
+  color: #64DFDF;
+}
+
+.login{
+  position: absolute;
+  margin: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 15px;
+}
+
+.container{
+  background-image:url("C:\Users\heytu\Documents\Universidad\PWGM\PWGM-frontend\src\image\login-img2.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  margin: 0 auto;
 }
 
 /* Buttons, focus */
 .login input[type="submit"]:focus {
-  border-color: #11CDEF;
+  border-color: #64DFDF;
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

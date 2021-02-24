@@ -1,5 +1,5 @@
-<form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
-  <h1 class="mat-h1" name="invName">Agregar mantenimiento</h1>
+<form [formGroup]="inventoryForm" (ngSubmit)="onSubmit()">
+  <h1 class="mat-h1" name="invName">Agregar equipo</h1>
   <mat-card class="shipping-card">
     <mat-card-header>
       <!-- <mat-card-title>Shipping Information</mat-card-title> -->
@@ -7,34 +7,42 @@
     <mat-card-content>
       <div class="row">
         <div class="col">
-          <mat-radio-group formControlName="tipoMantenimiento">
-            <mat-radio-button value="preventivo">Mantenimiento preventivo</mat-radio-button>
-            <mat-radio-button value="correctivo">Mantenimiento correctivo</mat-radio-button>
-          </mat-radio-group>
+          <mat-form-field class="full-width-select">
+            <mat-label>Nombre equipo</mat-label>
+            <input matInput placeholder="LAPTOP-00000" formControlName="equipo">
+            <mat-error *ngIf="inventoryForm.controls['equipo'].hasError('required')">
+              Ingrese nombre del <strong>equipo</strong>
+            </mat-error>
+          </mat-form-field>
         </div>
       </div>
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width-select">
-            <mat-select placeholder="Equipo" formControlName="equipo">
-              <mat-option *ngFor="let equipo of equipo" [value]="equipo.name">
-                {{ equipo.name }}
-              </mat-option>
-            </mat-select>
-            <mat-error *ngIf="addressForm.controls['equipo'].hasError('required')">
-              Seleccione un <strong>equipo</strong>
+            <mat-label>Arquitectura sistema</mat-label>
+            <input matInput placeholder="x86" formControlName="arquitectura">
+            <mat-error *ngIf="inventoryForm.controls['arquitectura'].hasError('required')">
+              Ingrese <strong>arquitectura</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width-select">
+            <mat-label>Procesador</mat-label>
+            <input matInput placeholder="Intel Core i3" formControlName="procesador">
+            <mat-error *ngIf="inventoryForm.controls['procesador'].hasError('required')">
+              Ingrese tipo de <strong>procesador</strong>
             </mat-error>
           </mat-form-field>
         </div>
         <div class="col">
           <mat-form-field class="full-width-select">
-            <mat-select placeholder="Departamento" formControlName="departamento">
-              <mat-option *ngFor="let departamento of departamento" [value]="departamento.name">
-                {{ departamento.name }}
-              </mat-option>
-            </mat-select>
-            <mat-error *ngIf="addressForm.controls['departamento'].hasError('required')">
-              Seleccione un <strong>departamento</strong>
+            <mat-label>Ram</mat-label>
+            <input matInput placeholder="8GB" formControlName="ram">
+            <mat-error *ngIf="inventoryForm.controls['ram'].hasError('required')">
+              Ingrese capacidad de <strong>ram</strong>
             </mat-error>
           </mat-form-field>
         </div>
@@ -42,20 +50,24 @@
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="Falla" formControlName="falla">
+            <mat-label>Adicional</mat-label>
+            <textarea matInput formControlName="adicional"></textarea>
           </mat-form-field>
         </div>
       </div>
       <div class="row">
         <div class="col">
-          <mat-form-field class="full-width">
-            <mat-label>Descripcion de falla</mat-label>
-            <textarea matInput formControlName="descripcion"></textarea>
+          <mat-form-field class="full-width-select">
+            <mat-label>Ubicacion</mat-label>
+            <input matInput placeholder="IT" formControlName="ubicacion">
+            <mat-error *ngIf="inventoryForm.controls['ubicacion'].hasError('required')">
+              Ingrese <strong>ubicacion</strong> del equipo
+            </mat-error>
           </mat-form-field>
         </div>
       </div>
     </mat-card-content>
-    <mat-card-actions>
+    <mat-card-actions align="end">
       <button mat-raised-button color="primary" type="submit">Aceptar</button>
     </mat-card-actions>
   </mat-card>

@@ -1,16 +1,21 @@
-<div class="container">
-    <div class="container">
-        <div class="login">
-            <!-- <div class="login-triangle"></div> -->
+<body>
+  <div class="container">
+    <div class="login">
 
-            <h2 class="login-header">Sistema de Gestión de Mantenimiento</h2>
+        <h2 class="login-header">Mantenlo App</h2>
 
-            <form #frmRegister="ngForm" class="login-container" (ngSubmit)="onRegister(frmRegister)">
-                <p><input type="email" name="email" placeholder="Email" ngModel required></p>
-                <p><input type="text" name="name" placeholder="Nombre" ngModel required></p>
-                <p><input type="password" name="password" placeholder="Contraseña" ngModel required></p>
-                <p><input type="submit" value="Crear usuario"></p>
-            </form>
-        </div>
+        <form #frmRegister="ngForm" class="login-container" (ngSubmit)="register(frmRegister)">
+          <p><input type="text" name="username" placeholder="Nombre"  ngModel required></p>
+          <p><input type="email" name="email" placeholder="Email" ngModel required></p>
+          <p><input type="text" name="telephone" placeholder="Telefono" ngModel required></p>
+          <p><input type="text" name="country" placeholder="Pais" ngModel required></p>
+          <p><input type="text" name="company" placeholder="Empresa" ngModel required></p>
+          <p><input type="password" name="password" placeholder="Contraseña" ngModel required></p>
+          <div class="button-row" >
+            <button mat-flat-button color="primary">Crear usuario</button>
+            <button mat-flat-button (click)="cancel()">Cancelar</button>
+          </div>
+        </form>
     </div>
-</div>
+  </div>
+</body>

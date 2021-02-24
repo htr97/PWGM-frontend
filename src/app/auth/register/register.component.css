@@ -1,0 +1,25 @@
+body {
+  height: 100vh;
+  display: flex;
+}
+
+.button-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mat-flat-button{
+  background: #64DFDF;
+  border-color: transparent;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 50px;
+  margin-right: 10px;
+}
+
+.mat-flat-button:hover {
+  border-color: white;
+  background-color: white;
+  color: #64DFDF;
+}

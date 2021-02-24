@@ -6,18 +6,16 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatSliderModule} from '@angular/material/slider';
 
-import { InventoryFormComponent } from './inventory-form.component';
+import { MaintenanceFormComponent } from './maintenance-form.component';
 
-describe('InventoryFormComponent', () => {
-  let component: InventoryFormComponent;
-  let fixture: ComponentFixture<InventoryFormComponent>;
+describe('MaintenanceFormComponent', () => {
+  let component: MaintenanceFormComponent;
+  let fixture: ComponentFixture<MaintenanceFormComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ InventoryFormComponent ],
+      declarations: [ MaintenanceFormComponent ],
       imports: [
         NoopAnimationsModule,
         ReactiveFormsModule,
@@ -26,14 +24,12 @@ describe('InventoryFormComponent', () => {
         MatInputModule,
         MatRadioModule,
         MatSelectModule,
-        MatDatepickerModule,
-        MatSliderModule
       ]
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(InventoryFormComponent);
+    fixture = TestBed.createComponent(MaintenanceFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -3,7 +3,7 @@
 }
 
 .sidenav {
-  width: 200px;
+  width: 300px;
 }
 
 .sidenav .mat-toolbar {
@@ -28,4 +28,17 @@
 
 .search-input{
   font-size: 12px;
+}
+
+mat-icon{
+  color: #64DFDF;
+}
+
+.mat-list-item{
+  color: rgb(112, 111, 111);
+}
+
+.logo {
+  max-width: 10% !important;
+  margin-right: 17% !important;
 }

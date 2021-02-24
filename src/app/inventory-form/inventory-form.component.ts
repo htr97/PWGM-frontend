@@ -1,5 +1,7 @@
+import { formatCurrency } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { MatInput } from '@angular/material/input';
 
 @Component({
   selector: 'app-inventory-form',
@@ -7,34 +9,29 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./inventory-form.component.css']
 })
 export class InventoryFormComponent {
-  addressForm = this.fb.group({
-    descripcion: null,
-    departamento: [null, Validators.required],
+  inventoryForm = this.fb.group({
     equipo: [null, Validators.required],
-    falla: [null, Validators.required],
-    tipoMantenimiento: ['free', Validators.required]
+    arquitectura: [null, Validators.required],
+    procesador: [null, Validators.required],
+    ram: [null, Validators.required],
+    ubicacion: [null, Validators.required],
+    adicional:null
   });
 
   hasUnitNumber = false;
 
-  equipo = [
-    {name: 'Computadora'},
-    {name: 'Laptop'},
-    {name: 'Computadora'},
-    {name: 'Laptop'},
-    {name: 'Computadora'},
-    {name: 'Laptop'},
-    {name: 'Computadora'},
-    {name: 'Laptop'}
-  ];
-
-  departamento = [
-    {name: 'Administracion'}
-  ];
 
   constructor(private fb: FormBuilder) {}
 
-  onSubmit() {
-    alert('Guardado!');
-  }
+  equip='';
+
+ onSubmit() {
+   if(this.inventoryForm.invalid){
+    console.log(this.inventoryForm.get('equipo').value);
+    return;
+   }
+   alert('Datos almacenados');
+  //  this.inventoryForm.resetForm();
+ }
+
 }

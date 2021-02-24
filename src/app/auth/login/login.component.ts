@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
-import { UserI } from '../../models/user';
+import { User } from '../../models/user';
+import { AccountService } from 'src/app/services/account.service';
+import { error } from 'protractor';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -9,17 +11,21 @@ import { UserI } from '../../models/user';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  model: any = {}
 
-  constructor(private AuthService: AuthService, private router: Router) { }
+  constructor(public accountService: AccountService, private router: Router) { }
 
   ngOnInit() {
   }
 
-  onLogin(form):void {
-    //console.log('Login',form.value)
-    this.AuthService.login(form.value).subscribe(res => {
-      this.router.navigateByUrl('/auth');
-    });
+  login(){
+    this.accountService.login(this.model).subscribe(response =>
+      {
+        console.log(response);
+        this.router.navigateByUrl('/principal')
+      }, error => {
+        console.log(error);
+      })
   }
 
 }

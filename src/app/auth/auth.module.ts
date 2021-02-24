@@ -6,6 +6,7 @@ import { AuthRoutingModule} from './auth-routing.module';
 import { LoginComponent} from './login/login.component';
 import { RegisterComponent} from './register/register.component';
 import { AuthService } from '../services/auth.service';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [ RegisterComponent, LoginComponent ],
@@ -13,7 +14,8 @@ import { AuthService } from '../services/auth.service';
     CommonModule,
     FormsModule,
     AuthRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    MatButtonModule
   ],
   providers:[
     AuthService

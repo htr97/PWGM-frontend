@@ -1,22 +1,32 @@
-<mat-sidenav-container class="sidenav-container">
+<mat-sidenav-container class="sidenav-container" *ngIf="accountService.currentUser$ | async">
   <mat-sidenav #drawer class="sidenav" fixedInViewport
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>SGM</mat-toolbar>
-    <mat-nav-list>
-      <a mat-list-item routerLink="/principal">
+      [opened]="(isHandset$ | async) === false"
+      style="background-color: #fafafa;">
+    <mat-toolbar style="font-size:xx-large; color:rgba(0, 0, 0, 0.76); font-weight: bold;text-align: center;">Mantenlo App</mat-toolbar>
+    <mat-nav-list >
+      <a mat-list-item routerLink="/principal" routerLinkActive='active'>
           <mat-icon matPrefix>home</mat-icon>&nbsp;Inicio
       </a>
-      <a mat-list-item routerLink="/inventory">
-        <mat-icon matPrefix>devices</mat-icon>&nbsp;Inventario
+      <a mat-list-item routerLink="/add-invItem" routerLinkActive='active'>
+        <mat-icon matPrefix >add_to_queue</mat-icon>&nbsp;Agregar equipo
       </a>
-      <a mat-list-item href="add-invItem">
-        <mat-icon matPrefix>build</mat-icon>&nbsp;Mantenimiento
+      <a mat-list-item routerLink="/inventory" routerLinkActive='active'>
+        <mat-icon matPrefix >devices</mat-icon>&nbsp;Revisar equipos
+      </a>
+      <a mat-list-item routerLink="/add-maintenance" routerLinkActive='active'>
+        <mat-icon matPrefix >build</mat-icon>&nbsp;Ingresar mantenimiento
+      </a>
+      <a mat-list-item routerLink ="/maintenance-orders" routerLinkActive='active'>
+        <mat-icon matPrefix >engineering</mat-icon>&nbsp;Ordenes de trabajo
+      </a>
+      <a mat-list-item href="" >
+        <mat-icon matPrefix >feed</mat-icon>&nbsp;Reportes
       </a>
     </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-content>
+  <mat-sidenav-content >
     <mat-toolbar color="warm">
       <button
         type="button"
@@ -26,12 +36,11 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-        <mat-icon matPrefix>search</mat-icon>&nbsp;
-        <input matInput type="search" placeholder="Buscar" class="search-input">
+        <!-- <mat-icon matPrefix>search</mat-icon>&nbsp;
+        <input matInput type="search" placeholder="Buscar" class="search-input"> -->
         <span class="spacer"></span>
-        <a href="#"><mat-icon matPrefix>notifications</mat-icon></a>
-        <a href="#"><mat-icon matPrefix>search</mat-icon></a>
-        <a href="#"><mat-icon matPrefix>person</mat-icon></a>
+        <a href="#"><mat-icon matPrefix >person</mat-icon></a>
+        <a href="#"><mat-icon matPrefix (click)="logout()">logout</mat-icon></a>
     </mat-toolbar>
     <!-- <ng-content></ng-content> -->
     <router-outlet></router-outlet>

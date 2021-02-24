@@ -1,13 +1,14 @@
-<div class="container">
+<body>
+  <div class="container">
     <div class="login">
-        <!-- <div class="login-triangle"></div> -->
+        <h2 class="login-header">Mantenlo App</h2>
 
-        <h2 class="login-header">Sistema de Gestión de Mantenimiento</h2>
-
-        <form #frmLogin="ngForm" class="login-container" (ngSubmit)="onLogin(frmLogin)">
-            <p><input type="email" name="email" placeholder="Email" ngModel required></p>
-            <p><input type="password" name="password" placeholder="Contraseña" ngModel required></p>
+        <form #frmLogin="ngForm" class="login-container" (ngSubmit)="login()">
+            <p><input type="email" [(ngModel)]="model.email" name="email" placeholder="Email" ngModel required></p>
+            <p><input type="password" [(ngModel)]="model.password" name="password" placeholder="Contraseña" ngModel required></p>
             <p><input type="submit" value="Iniciar sesión"></p>
         </form>
+        <p class="rgt">¿No tienes cuenta? <a routerLink="/auth/register" style="color:#64DFDF">Registrate</a>.</p>
     </div>
 </div>
+</body>

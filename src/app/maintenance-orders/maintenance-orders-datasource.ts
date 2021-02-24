@@ -5,33 +5,28 @@ import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
 
 // TODO: Replace this with your own data model type
-export interface InventoryViewItem {
-  codigo: number;
-  nombre: string;
-  arquitectura: string;
-  procesador: string;
-  ram: string;
-  adicional: string;
-  ubicacion: string;
+export interface MaintenanceOrdersItem {
+  equipo: string;
+  departamento: string;
+  tipoMantenimiento: string;
+  fecha: string;
+  prioridad: string;
 }
-//'codigo', 'nombre', 'arquitectura', 'procesador', 'ram', 'adicional', 'ubicacion'
 
 // TODO: replace this with real data from your application
-const EXAMPLE_DATA: InventoryViewItem[] = [
-  {codigo: 101, nombre:'LAPTOP-52GSH3F', arquitectura:'x64', procesador:'AMD Ryzen 5', ram: '8.0 GB', adicional:'Computadora', ubicacion:'IT'},
-  {codigo: 115, nombre:'LAPTOP-34GHK83', arquitectura:'x64', procesador:'Intel Core i9',ram: '16.0 GB', adicional:'Computadora', ubicacion:'IT'},
-  {codigo: 116, nombre:'LAPTOP-ABC123', arquitectura:'x86', procesador:'Intel Core i3',ram: '8GB', adicional:'Equipo nuevo', ubicacion:'Administracion'}
+const EXAMPLE_DATA: MaintenanceOrdersItem[] = [
+  {equipo:'LAPTOP-52GSH3F',departamento:'IT',tipoMantenimiento:'Correctivo',fecha:'2021-02-04',prioridad:'Alta'},
+  {equipo:'LAPTOP-34GHK83',departamento:'IT',tipoMantenimiento:'Correctivo',fecha:'2021-02-05',prioridad:'Media'},
+  {equipo:'LAPTOP-ABC123',departamento:'Administracion',tipoMantenimiento:'Correctivo',fecha:'2021-02-21',prioridad:'Alta'}
 ];
 
-
-
 /**
- * Data source for the InventoryView view. This class should
+ * Data source for the MaintenanceOrders view. This class should
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class InventoryViewDataSource extends DataSource<InventoryViewItem> {
-  data: InventoryViewItem[] = EXAMPLE_DATA;
+export class MaintenanceOrdersDataSource extends DataSource<MaintenanceOrdersItem> {
+  data: MaintenanceOrdersItem[] = EXAMPLE_DATA;
   paginator: MatPaginator;
   sort: MatSort;
 
@@ -44,7 +39,7 @@ export class InventoryViewDataSource extends DataSource<InventoryViewItem> {
    * the returned stream emits new items.
    * @returns A stream of the items to be rendered.
    */
-  connect(): Observable<InventoryViewItem[]> {
+  connect(): Observable<MaintenanceOrdersItem[]> {
     // Combine everything that affects the rendered data into one update
     // stream for the data-table to consume.
     const dataMutations = [
@@ -68,7 +63,7 @@ export class InventoryViewDataSource extends DataSource<InventoryViewItem> {
    * Paginate the data (client-side). If you're using server-side pagination,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getPagedData(data: InventoryViewItem[]) {
+  private getPagedData(data: MaintenanceOrdersItem[]) {
     const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
     return data.splice(startIndex, this.paginator.pageSize);
   }
@@ -77,7 +72,7 @@ export class InventoryViewDataSource extends DataSource<InventoryViewItem> {
    * Sort the data (client-side). If you're using server-side sorting,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getSortedData(data: InventoryViewItem[]) {
+  private getSortedData(data: MaintenanceOrdersItem[]) {
     if (!this.sort.active || this.sort.direction === '') {
       return data;
     }
@@ -85,13 +80,8 @@ export class InventoryViewDataSource extends DataSource<InventoryViewItem> {
     return data.sort((a, b) => {
       const isAsc = this.sort.direction === 'asc';
       switch (this.sort.active) {
-        case 'codigo': return compare(+a.codigo, +b.codigo, isAsc);
-        case 'nombre': return compare(a.nombre, b.nombre, isAsc);
-        case 'arquitectura': return compare(a.arquitectura, b.arquitectura, isAsc);
-        case 'procesador': return compare(a.procesador, b.procesador, isAsc);
-        case 'ram': return compare(a.ram, b.ram, isAsc);
-        case 'adicional': return compare(a.adicional, b.adicional, isAsc);
-        case 'ubicacion': return compare(a.ubicacion, b.ubicacion, isAsc);
+        case 'equipo': return compare(a.equipo, b.equipo, isAsc);
+        case 'prioridad': return compare(+a.prioridad, +b.prioridad, isAsc);
         default: return 0;
       }
     });
