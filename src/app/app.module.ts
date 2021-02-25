@@ -27,8 +27,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MaintenanceFormComponent } from './maintenance-form/maintenance-form.component';
 import { MaintenanceOrdersComponent } from './maintenance-orders/maintenance-orders.component';
 
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
+import { JwtInterceptor } from './interceptors/jwt.interceptor';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,9 @@ import { HomeComponent } from './home/home.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
