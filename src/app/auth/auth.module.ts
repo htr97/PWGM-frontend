@@ -5,7 +5,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthRoutingModule} from './auth-routing.module';
 import { LoginComponent} from './login/login.component';
 import { RegisterComponent} from './register/register.component';
-import { AuthService } from '../services/auth.service';
 import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
@@ -18,7 +17,6 @@ import {MatButtonModule} from '@angular/material/button';
     MatButtonModule
   ],
   providers:[
-    AuthService
   ]
 })
 export class AuthModule { }

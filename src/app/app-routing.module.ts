@@ -12,7 +12,7 @@ import { PrincipalComponent } from './principal/principal.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'/auth/login', pathMatch:'full' },
-  {path:'auth', loadChildren:'./auth/auth.module#AuthModule'},
+  {path:'auth', loadChildren:() => import('./auth/auth.module').then(m => m.AuthModule)},
   {
     path:'',
     runGuardsAndResolvers:'always',

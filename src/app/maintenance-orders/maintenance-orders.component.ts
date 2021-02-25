@@ -10,9 +10,9 @@ import { MaintenanceOrdersDataSource, MaintenanceOrdersItem } from './maintenanc
   styleUrls: ['./maintenance-orders.component.css']
 })
 export class MaintenanceOrdersComponent implements AfterViewInit, OnInit {
-  @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
-  @ViewChild(MatSort, {static: false}) sort: MatSort;
-  @ViewChild(MatTable, {static: false}) table: MatTable<MaintenanceOrdersItem>;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatTable) table: MatTable<MaintenanceOrdersItem>;
   dataSource: MaintenanceOrdersDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
