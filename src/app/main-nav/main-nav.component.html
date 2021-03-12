@@ -21,6 +21,12 @@
       <a mat-list-item routerLink ="/maintenance-orders" routerLinkActive='active'>
         <mat-icon matPrefix >engineering</mat-icon>&nbsp;Ordenes de trabajo
       </a>
+      <a mat-list-item routerLink="/problems" routerLinkActive='active'>
+        <mat-icon matPrefix >bug_report</mat-icon>&nbsp;Problemas
+      </a>
+      <!-- <a mat-list-item routerLink ="/maintenance-orders" routerLinkActive='active'>
+        <mat-icon matPrefix >engineering</mat-icon>&nbsp;Ordenes de trabajo
+      </a> -->
       <a mat-list-item href="" >
         <mat-icon matPrefix >feed</mat-icon>&nbsp;Reportes
       </a>
@@ -39,7 +45,7 @@
         <!-- <mat-icon matPrefix>search</mat-icon>&nbsp;
         <input matInput type="search" placeholder="Buscar" class="search-input"> -->
         <span class="spacer"></span>
-        <a href="#"><mat-icon matPrefix >person</mat-icon></a>
+        <a routerLink ="/profile/marcos@unitec.edu"><mat-icon matPrefix >person</mat-icon></a>
         <a href="#"><mat-icon matPrefix (click)="logout()">logout</mat-icon></a>
     </mat-toolbar>
     <!-- <ng-content></ng-content> -->

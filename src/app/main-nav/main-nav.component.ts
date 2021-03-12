@@ -3,6 +3,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { AccountService } from 'src/app/services/account.service';
+import { Uinfo } from '../models/uinfo';
 
 @Component({
   selector: 'app-main-nav',
@@ -10,6 +11,7 @@ import { AccountService } from 'src/app/services/account.service';
   styleUrls: ['./main-nav.component.css']
 })
 export class MainNavComponent implements OnInit{
+  user: Uinfo;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(

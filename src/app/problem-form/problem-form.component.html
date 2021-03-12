@@ -1,0 +1,32 @@
+<h1 mat-dialog-title>Agregar problema</h1>
+<div mat-dialog-content>
+  <form [formGroup]="problemForm">
+    <mat-card class="shipping-card">
+      <mat-card-content>
+        <div class="row">
+            <mat-form-field class="full-width-select">
+              <mat-label>Problema</mat-label>
+              <input matInput placeholder="Bloqueo de equipo" formControlName="Name">
+              <mat-error *ngIf="problemForm.controls['Name'].hasError('required')">
+                Ingrese nombre del <strong>problema</strong>
+              </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field class="full-width-select">
+              <mat-label>Descripcion</mat-label>
+              <input matInput placeholder="Windows 10" formControlName="Description">
+              <mat-error *ngIf="problemForm.controls['Description'].hasError('required')">
+                Ingrese <strong>descripcion</strong> del problema
+              </mat-error>
+            </mat-form-field>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cerrar</button>
+  <button mat-button (click)="onSubmit()">Guardar</button>
+</div>
+

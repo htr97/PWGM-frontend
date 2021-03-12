@@ -28,8 +28,11 @@ import { MaintenanceFormComponent } from './maintenance-form/maintenance-form.co
 import { MaintenanceOrdersComponent } from './maintenance-orders/maintenance-orders.component';
 
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
-import { HomeComponent } from './home/home.component';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
+import { ProfileViewComponent } from './profile-view/profile-view.component';
+import { ProblemFormComponent } from './problem-form/problem-form.component';
+import { ProblemViewComponent } from './problem-view/problem-view.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -40,8 +43,11 @@ import { JwtInterceptor } from './interceptors/jwt.interceptor';
     InventoryFormComponent,
     MaintenanceFormComponent,
     MaintenanceOrdersComponent,
-    HomeComponent
+    ProfileViewComponent,
+    ProblemFormComponent,
+    ProblemViewComponent
   ],
+  entryComponents:[ProblemFormComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -49,6 +55,7 @@ import { JwtInterceptor } from './interceptors/jwt.interceptor';
     LayoutModule,
     MatToolbarModule,
     MatButtonModule,
+    MatDialogModule,
     MatSidenavModule,
     MatIconModule,
     MatListModule,

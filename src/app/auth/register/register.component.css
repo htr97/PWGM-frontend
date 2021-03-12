@@ -3,18 +3,12 @@ body {
   display: flex;
 }
 
-.button-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .mat-flat-button{
   background: #64DFDF;
   border-color: transparent;
   color: #fff;
   cursor: pointer;
-  border-radius: 50px;
+  border-radius: 25px;
   margin-right: 10px;
 }
 
@@ -23,3 +17,43 @@ body {
   background-color: white;
   color: #64DFDF;
 }
+
+.register {
+  background: rgba(255, 255, 255, 0.4);
+  width: 550px;
+  margin: 16px auto;
+  font-size: 16px;
+  position: absolute;
+  margin: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 15px;
+}
+
+.shipping-card {
+  min-width: 150px;
+  margin: 25px;
+  background-color: transparent i !important;
+}
+
+.full-width-select{
+  width: 100%;
+}
+
+.register p{
+  width: 95%;
+}
+
+td {
+  padding-right: 8px;
+}
+
+
+/* ::ng-deep .mat-form-field-flex > .mat-form-field-infix { padding: 0.4em 0px !important;}
+::ng-deep .mat-form-field-label-wrapper { top: -1.5em; }
+
+::ng-deep .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+    transform: translateY(-1.1em) scale(.75);
+    width: 133.33333%;
+} */

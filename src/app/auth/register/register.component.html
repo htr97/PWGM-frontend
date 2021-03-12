@@ -1,20 +1,84 @@
 <body>
   <div class="container">
-    <div class="login">
-
-        <h2 class="login-header">Mantenlo App</h2>
-
-        <form #frmRegister="ngForm" class="login-container" (ngSubmit)="register(frmRegister)">
-          <p><input type="text" name="username" placeholder="Nombre"  ngModel required></p>
-          <p><input type="email" name="email" placeholder="Email" ngModel required></p>
-          <p><input type="text" name="telephone" placeholder="Telefono" ngModel required></p>
-          <p><input type="text" name="country" placeholder="Pais" ngModel required></p>
-          <p><input type="text" name="company" placeholder="Empresa" ngModel required></p>
-          <p><input type="password" name="password" placeholder="Contraseña" ngModel required></p>
-          <div class="button-row" >
-            <button mat-flat-button color="primary">Crear usuario</button>
-            <button mat-flat-button (click)="cancel()">Cancelar</button>
-          </div>
+    <div class="register">
+      <h2 class="login-header">Mantenlo App</h2>
+      <!-- <form #frmRegister="ngForm" class="login-container" (ngSubmit)="register(frmRegister)"> -->
+        <form [formGroup]="registerForm" class="login-container" (ngSubmit)="register()">
+          <mat-card class="shipping-card">
+            <mat-card-header></mat-card-header>
+            <mat-card-content class="card-content">
+              <table class="full-width-select" cellspacing="0"><tr>
+                <td><mat-form-field appearance="outline">
+                  <mat-label>Nombre</mat-label>
+                  <input matInput placeholder="Sam" formControlName="FirstName">
+                  <mat-error *ngIf="registerForm.controls['FirstName'].hasError('required')">
+                    Ingrese <strong>nombre</strong>
+                  </mat-error>
+                </mat-form-field></td>
+                <td><mat-form-field appearance="outline">
+                  <mat-label>Apellido</mat-label>
+                  <input matInput placeholder="Reyes" formControlName="LastName">
+                  <mat-error *ngIf="registerForm.controls['LastName'].hasError('required')">
+                    Ingrese <strong>apellido</strong>
+                  </mat-error>
+                </mat-form-field></td>
+              </tr></table>
+              <p>
+                <mat-form-field class="full-width-select"  appearance="outline">
+                  <mat-label>Email</mat-label>
+                  <input matInput placeholder="nombre@empresa.com" formControlName="Email">
+                  <mat-error *ngIf="registerForm.controls['Email'].hasError('required')">
+                    Ingrese <strong>correo</strong> de la empresa
+                  </mat-error>
+                </mat-form-field>
+              </p>
+              <table class="full-width-select" cellspacing="0"><tr>
+                <td><mat-form-field appearance="outline">
+                  <mat-label>País</mat-label>
+                  <input matInput placeholder="Honduras" formControlName="Country">
+                  <mat-error *ngIf="registerForm.controls['Country'].hasError('required')">
+                    Ingrese <strong>país</strong>
+                  </mat-error>
+                </mat-form-field></td>
+                <td><mat-form-field appearance="outline">
+                  <mat-label>Telefono</mat-label>
+                  <input type="tel" matInput placeholder="98765432" formControlName="Telephone">
+                  <mat-error *ngIf="registerForm.controls['Telephone'].hasError('required')">
+                    Ingrese número de <strong>telefono</strong>
+                  </mat-error>
+                </mat-form-field></td>
+              </tr></table>
+              <table class="full-width-select" cellspacing="0"><tr>
+                <td><mat-form-field appearance="outline">
+                  <mat-label>Empresa</mat-label>
+                  <input matInput placeholder="Empresa" formControlName="Company">
+                  <mat-error *ngIf="registerForm.controls['Company'].hasError('required')">
+                    Ingrese nombre de la<strong>empresa</strong>
+                  </mat-error>
+                </mat-form-field></td>
+                <td><mat-form-field appearance="outline">
+                  <mat-label>Puesto</mat-label>
+                  <input matInput placeholder="Gerente" formControlName="Title">
+                  <mat-error *ngIf="registerForm.controls['Title'].hasError('required')">
+                    Ingrese <strong>puesto</strong>
+                  </mat-error>
+                </mat-form-field></td>
+              </tr></table>
+              <p>
+                <mat-form-field class="full-width-select" appearance="outline">
+                  <mat-label>Contraseña</mat-label>
+                  <input type="password" matInput placeholder="Elija una contraseña" formControlName="Password">
+                  <mat-error *ngIf="registerForm.controls['Password'].hasError('required')">
+                    Ingrese una <strong>contraseña</strong>
+                  </mat-error>
+                </mat-form-field>
+              </p>
+            </mat-card-content>
+            <mat-card-actions align="center">
+              <button mat-flat-button color="primary">Crear usuario</button>
+              <button mat-flat-button (click)="cancel()">Cancelar</button>
+            </mat-card-actions>
+          </mat-card>
         </form>
     </div>
   </div>

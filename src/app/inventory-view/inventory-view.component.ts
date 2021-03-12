@@ -1,30 +1,47 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTable } from '@angular/material/table';
-import { InventoryViewDataSource, InventoryViewItem } from './inventory-view-datasource';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { take } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
+import { Equipment } from '../models/equipment';
+import { User } from '../models/user';
+import { AccountService } from '../services/account.service';
+import { EquipmentService } from '../services/equipment.service';
 
 @Component({
   selector: 'app-inventory-view',
   templateUrl: './inventory-view.component.html',
   styleUrls: ['./inventory-view.component.css']
 })
-export class InventoryViewComponent implements AfterViewInit, OnInit {
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
-  @ViewChild(MatTable) table: MatTable<InventoryViewItem>;
-  dataSource: InventoryViewDataSource;
+export class InventoryViewComponent implements OnInit {
+  baseUrl = environment.apiUrl;
+  user: User;
+  ELEMENT_DATA: Equipment[];
+  displayedColumns: string[] = ['id','deviceName','storageType','processor','osName',"actions"];
+  dataSource = new MatTableDataSource<Equipment>(this.ELEMENT_DATA);
 
-  /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['codigo', 'nombre', 'arquitectura', 'procesador', 'ram', 'adicional', 'ubicacion','actions'];
-
-  ngOnInit() {
-    this.dataSource = new InventoryViewDataSource();
+  constructor(private http: HttpClient, private accountService: AccountService, private equipmentService: EquipmentService) {
+    this.accountService.currentUser$.pipe(take(1)).subscribe(user => this.user = user);
   }
 
-  ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
-    this.table.dataSource = this.dataSource;
+  ngOnInit(): void {
+    this.getEquipment();
+  }
+
+  getEquipment(){
+    this.equipmentService.GetEquipmentByCompany(this.user.email).subscribe(equipment => {
+      this.dataSource.data = equipment;
+    })
+  }
+
+  edit(id): void{
+    console.log(id);
+  }
+
+  deleteEquipment(id: number): void{
+    this.equipmentService.deleteEquipment(id).subscribe(response => {
+      console.log(response);
+      this.getEquipment();
+    })
   }
 }

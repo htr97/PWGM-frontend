@@ -6,6 +6,10 @@ import { AuthRoutingModule} from './auth-routing.module';
 import { LoginComponent} from './login/login.component';
 import { RegisterComponent} from './register/register.component';
 import {MatButtonModule} from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [ RegisterComponent, LoginComponent ],
@@ -14,7 +18,11 @@ import {MatButtonModule} from '@angular/material/button';
     FormsModule,
     AuthRoutingModule,
     HttpClientModule,
-    MatButtonModule
+    MatButtonModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatCardModule,
+    ReactiveFormsModule
   ],
   providers:[
   ]

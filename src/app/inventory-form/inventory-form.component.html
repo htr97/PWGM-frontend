@@ -9,8 +9,8 @@
         <div class="col">
           <mat-form-field class="full-width-select">
             <mat-label>Nombre equipo</mat-label>
-            <input matInput placeholder="LAPTOP-00000" formControlName="equipo">
-            <mat-error *ngIf="inventoryForm.controls['equipo'].hasError('required')">
+            <input matInput placeholder="LAPTOP-00000" formControlName="DeviceName">
+            <mat-error *ngIf="inventoryForm.controls['DeviceName'].hasError('required')">
               Ingrese nombre del <strong>equipo</strong>
             </mat-error>
           </mat-form-field>
@@ -19,9 +19,18 @@
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width-select">
+            <mat-label>Sistema operativo</mat-label>
+            <input matInput placeholder="Windows 10" formControlName="OsName">
+            <mat-error *ngIf="inventoryForm.controls['OsName'].hasError('required')">
+              Ingrese tipo de <strong>sistema operativo</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width-select">
             <mat-label>Arquitectura sistema</mat-label>
-            <input matInput placeholder="x86" formControlName="arquitectura">
-            <mat-error *ngIf="inventoryForm.controls['arquitectura'].hasError('required')">
+            <input matInput placeholder="x86" formControlName="SystemType">
+            <mat-error *ngIf="inventoryForm.controls['SystemType'].hasError('required')">
               Ingrese <strong>arquitectura</strong>
             </mat-error>
           </mat-form-field>
@@ -31,8 +40,8 @@
         <div class="col">
           <mat-form-field class="full-width-select">
             <mat-label>Procesador</mat-label>
-            <input matInput placeholder="Intel Core i3" formControlName="procesador">
-            <mat-error *ngIf="inventoryForm.controls['procesador'].hasError('required')">
+            <input matInput placeholder="Intel Core i3" formControlName="Processor">
+            <mat-error *ngIf="inventoryForm.controls['Processor'].hasError('required')">
               Ingrese tipo de <strong>procesador</strong>
             </mat-error>
           </mat-form-field>
@@ -40,9 +49,40 @@
         <div class="col">
           <mat-form-field class="full-width-select">
             <mat-label>Ram</mat-label>
-            <input matInput placeholder="8GB" formControlName="ram">
-            <mat-error *ngIf="inventoryForm.controls['ram'].hasError('required')">
+            <input matInput placeholder="8GB" formControlName="Memory">
+            <mat-error *ngIf="inventoryForm.controls['Memory'].hasError('required')">
               Ingrese capacidad de <strong>ram</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width-select">
+            <mat-label>Tipo almacenamiento</mat-label>
+            <input matInput placeholder="SSD" formControlName="StorageType">
+            <mat-error *ngIf="inventoryForm.controls['StorageType'].hasError('required')">
+              Ingrese tipo de <strong>almacenamiento</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width-select">
+            <mat-label>Capacidad almacenamiento</mat-label>
+            <input matInput placeholder="500GB" formControlName="StorageCap">
+            <mat-error *ngIf="inventoryForm.controls['StorageCap'].hasError('required')">
+              Ingrese <strong>capacidad almacenamiento</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width-select">
+            <mat-label>Ubicacion</mat-label>
+            <input matInput placeholder="IT" formControlName="Ubication">
+            <mat-error *ngIf="inventoryForm.controls['Ubication'].hasError('required')">
+              Ingrese <strong>ubicacion</strong> del equipo
             </mat-error>
           </mat-form-field>
         </div>
@@ -51,18 +91,7 @@
         <div class="col">
           <mat-form-field class="full-width">
             <mat-label>Adicional</mat-label>
-            <textarea matInput formControlName="adicional"></textarea>
-          </mat-form-field>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <mat-form-field class="full-width-select">
-            <mat-label>Ubicacion</mat-label>
-            <input matInput placeholder="IT" formControlName="ubicacion">
-            <mat-error *ngIf="inventoryForm.controls['ubicacion'].hasError('required')">
-              Ingrese <strong>ubicacion</strong> del equipo
-            </mat-error>
+            <textarea matInput formControlName="Observation"></textarea>
           </mat-form-field>
         </div>
       </div>
