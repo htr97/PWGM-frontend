@@ -1,10 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { take } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { MaintenanceDetailComponent } from '../maintenance-detail/maintenance-detail.component';
 import { GetMaintenance } from '../models/get-maintenance';
 import { User } from '../models/user';
 import { AccountService } from '../services/account.service';
@@ -22,7 +24,9 @@ export class MaintenanceOrdersComponent implements OnInit {
   displayedColumns: string[] = ['deviceName','startDate','endDate','priority','problem','maintenanceType',"actions"];
   dataSource = new MatTableDataSource<GetMaintenance>(this.ELEMENT_DATA);
 
-  constructor(private http: HttpClient, private accountService: AccountService, private maintenanceService: MaintenanceService) {
+  constructor(private http: HttpClient, private accountService: AccountService, private maintenanceService: MaintenanceService,
+    private dialog: MatDialog)
+  {
     this.accountService.currentUser$.pipe(take(1)).subscribe(user => this.user = user);
   }
 
@@ -36,10 +40,17 @@ export class MaintenanceOrdersComponent implements OnInit {
     })
   }
 
-  deleteEquipment(id: number): void{
+  deleteMaintenance(id: number): void{
     this.maintenanceService.deleteMaintenance(id).subscribe(response => {
       console.log(response);
       this.getMaintenance();
     })
+  }
+
+  editMaintenance(): void{
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "50%"
+    this.dialog.open(MaintenanceDetailComponent,dialogConfig);
   }
 }

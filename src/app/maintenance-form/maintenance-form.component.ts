@@ -24,7 +24,7 @@ export class MaintenanceFormComponent implements OnInit{
     endDate: [],
   });
 
-  hasUnitNumber = false;
+
   user: User;
 
   equipo = [];

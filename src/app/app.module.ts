@@ -33,6 +33,8 @@ import { ProfileViewComponent } from './profile-view/profile-view.component';
 import { ProblemFormComponent } from './problem-form/problem-form.component';
 import { ProblemViewComponent } from './problem-view/problem-view.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MaintenanceDetailComponent } from './maintenance-detail/maintenance-detail.component';
+import { EquipmentDetailComponent } from './equipment-detail/equipment-detail.component';
 
 @NgModule({
   declarations: [
@@ -45,9 +47,11 @@ import { MatDialogModule } from '@angular/material/dialog';
     MaintenanceOrdersComponent,
     ProfileViewComponent,
     ProblemFormComponent,
-    ProblemViewComponent
+    ProblemViewComponent,
+    MaintenanceDetailComponent,
+    EquipmentDetailComponent
   ],
-  entryComponents:[ProblemFormComponent],
+  entryComponents:[ProblemFormComponent, MaintenanceDetailComponent,EquipmentDetailComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

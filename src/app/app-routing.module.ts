@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
+import { EquipmentDetailComponent } from './equipment-detail/equipment-detail.component';
 import { AuthGuard } from './guards/auth.guard';
 import { InventoryFormComponent } from './inventory-form/inventory-form.component';
 import { InventoryViewComponent } from './inventory-view/inventory-view.component';
+import { MaintenanceDetailComponent } from './maintenance-detail/maintenance-detail.component';
 import { MaintenanceFormComponent } from './maintenance-form/maintenance-form.component';
 import { MaintenanceOrdersComponent } from './maintenance-orders/maintenance-orders.component';
 import { PrincipalComponent } from './principal/principal.component';
@@ -25,7 +27,9 @@ const routes: Routes = [
     {path: 'add-maintenance', component:MaintenanceFormComponent},
     {path: 'maintenance-orders', component:MaintenanceOrdersComponent},
     {path: 'profile', component:ProfileViewComponent},
-    {path: 'problems', component:ProblemViewComponent}
+    {path: 'problems', component:ProblemViewComponent},
+    {path: 'maintenance-detail', component:MaintenanceDetailComponent},
+    {path: 'equipment-detail', component:EquipmentDetailComponent}
     ]
   },
   {path: '**', redirectTo:'/principal', pathMatch: 'full'}

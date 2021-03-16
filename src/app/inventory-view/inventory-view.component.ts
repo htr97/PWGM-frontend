@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { take } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { EquipmentDetailComponent } from '../equipment-detail/equipment-detail.component';
 import { Equipment } from '../models/equipment';
 import { User } from '../models/user';
 import { AccountService } from '../services/account.service';
@@ -20,7 +22,8 @@ export class InventoryViewComponent implements OnInit {
   displayedColumns: string[] = ['id','deviceName','storageType','processor','osName',"actions"];
   dataSource = new MatTableDataSource<Equipment>(this.ELEMENT_DATA);
 
-  constructor(private http: HttpClient, private accountService: AccountService, private equipmentService: EquipmentService) {
+  constructor(private http: HttpClient, private accountService: AccountService, private equipmentService: EquipmentService,
+    private dialog: MatDialog) {
     this.accountService.currentUser$.pipe(take(1)).subscribe(user => this.user = user);
   }
 
@@ -43,5 +46,12 @@ export class InventoryViewComponent implements OnInit {
       console.log(response);
       this.getEquipment();
     })
+  }
+
+  onCreate(){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "50%"
+    this.dialog.open(EquipmentDetailComponent,dialogConfig);
   }
 }
