@@ -7,7 +7,7 @@
           <div class="col">
             <mat-form-field class="full-width-select">
               <mat-label>Nombre equipo</mat-label>
-              <input matInput placeholder="LAPTOP-00000" formControlName="DeviceName">
+              <input matInput formControlName="DeviceName">
               <mat-error *ngIf="inventoryForm.controls['DeviceName'].hasError('required')">
                 Ingrese nombre del <strong>equipo</strong>
               </mat-error>
@@ -18,7 +18,7 @@
           <div class="col">
             <mat-form-field class="full-width-select">
               <mat-label>Sistema operativo</mat-label>
-              <input matInput placeholder="Windows 10" formControlName="OsName">
+              <input matInput formControlName="OsName">
               <mat-error *ngIf="inventoryForm.controls['OsName'].hasError('required')">
                 Ingrese tipo de <strong>sistema operativo</strong>
               </mat-error>
@@ -27,7 +27,7 @@
           <div class="col">
             <mat-form-field class="full-width-select">
               <mat-label>Arquitectura sistema</mat-label>
-              <input matInput placeholder="x86" formControlName="SystemType">
+              <input matInput formControlName="SystemType">
               <mat-error *ngIf="inventoryForm.controls['SystemType'].hasError('required')">
                 Ingrese <strong>arquitectura</strong>
               </mat-error>
@@ -38,7 +38,7 @@
           <div class="col">
             <mat-form-field class="full-width-select">
               <mat-label>Procesador</mat-label>
-              <input matInput placeholder="Intel Core i3" formControlName="Processor">
+              <input matInput formControlName="Processor">
               <mat-error *ngIf="inventoryForm.controls['Processor'].hasError('required')">
                 Ingrese tipo de <strong>procesador</strong>
               </mat-error>
@@ -47,7 +47,7 @@
           <div class="col">
             <mat-form-field class="full-width-select">
               <mat-label>Ram</mat-label>
-              <input matInput placeholder="8GB" formControlName="Memory">
+              <input matInput formControlName="Memory">
               <mat-error *ngIf="inventoryForm.controls['Memory'].hasError('required')">
                 Ingrese capacidad de <strong>ram</strong>
               </mat-error>
@@ -58,7 +58,7 @@
           <div class="col">
             <mat-form-field class="full-width-select">
               <mat-label>Tipo almacenamiento</mat-label>
-              <input matInput placeholder="SSD" formControlName="StorageType">
+              <input matInput  formControlName="StorageType">
               <mat-error *ngIf="inventoryForm.controls['StorageType'].hasError('required')">
                 Ingrese tipo de <strong>almacenamiento</strong>
               </mat-error>
@@ -67,7 +67,7 @@
           <div class="col">
             <mat-form-field class="full-width-select">
               <mat-label>Capacidad almacenamiento</mat-label>
-              <input matInput placeholder="500GB" formControlName="StorageCap">
+              <input matInput formControlName="StorageCap">
               <mat-error *ngIf="inventoryForm.controls['StorageCap'].hasError('required')">
                 Ingrese <strong>capacidad almacenamiento</strong>
               </mat-error>
@@ -77,8 +77,13 @@
         <div class="row">
           <div class="col">
             <mat-form-field class="full-width-select">
-              <mat-label>Ubicacion</mat-label>
-              <input matInput placeholder="IT" formControlName="Ubication">
+              <!-- <mat-label>Ubicacion</mat-label> -->
+              <mat-select placeholder="Ubicación" formControlName="Ubication">
+                <mat-option *ngFor="let ubication of ubications" [value]="ubication.id">
+                  {{ ubication.name }}
+                </mat-option>
+              </mat-select>
+              <!-- <input matInput formControlName="Ubication"> -->
               <mat-error *ngIf="inventoryForm.controls['Ubication'].hasError('required')">
                 Ingrese <strong>ubicacion</strong> del equipo
               </mat-error>
@@ -99,6 +104,6 @@
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Cerrar</button>
-  <button mat-button >Guardar</button>
+  <button mat-button (click)="onSubmit()">Guardar</button>
 </div>
 

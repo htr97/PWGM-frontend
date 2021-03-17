@@ -48,10 +48,21 @@ export class InventoryViewComponent implements OnInit {
     })
   }
 
-  onCreate(){
+  onCreate(id: number){
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "50%"
+    dialogConfig.disableClose = true;
+    dialogConfig.width = "50%";
+
+    dialogConfig.data = {
+      id: id,
+      email: this.user.email
+    }
+
     this.dialog.open(EquipmentDetailComponent,dialogConfig);
+
+    this.dialog.afterAllClosed.subscribe(() => {
+      this.getEquipment();
+    })
   }
 }

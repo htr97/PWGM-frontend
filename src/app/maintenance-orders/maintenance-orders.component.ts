@@ -42,15 +42,24 @@ export class MaintenanceOrdersComponent implements OnInit {
 
   deleteMaintenance(id: number): void{
     this.maintenanceService.deleteMaintenance(id).subscribe(response => {
-      console.log(response);
       this.getMaintenance();
     })
   }
 
-  editMaintenance(): void{
+  editMaintenance(id: number): void{
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
     dialogConfig.width = "50%"
+
+    dialogConfig.data = {
+      id: id,
+      email: this.user.email
+    }
+
     this.dialog.open(MaintenanceDetailComponent,dialogConfig);
+
+    this.dialog.afterAllClosed.subscribe(() => {
+      this.getMaintenance();
+    })
   }
 }

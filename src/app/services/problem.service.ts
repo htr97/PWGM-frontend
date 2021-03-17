@@ -19,4 +19,8 @@ export class ProblemService {
   PostProblemByCompany(PostProblem: PostProblem){
     return this.http.post(this.baseUrl + 'Problem', PostProblem);
   }
+
+  deleteProblem(id: number){
+    return this.http.delete(this.baseUrl+'Problem/'+id);
+  }
 }

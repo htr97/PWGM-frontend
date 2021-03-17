@@ -42,5 +42,16 @@ export class ProblemViewComponent implements OnInit {
     dialogConfig.autoFocus = true;
     dialogConfig.width = "50%"
     this.dialog.open(ProblemFormComponent,dialogConfig);
+
+    this.dialog.afterAllClosed.subscribe(() => {
+      this.getProblem();
+    })
+  }
+
+  deleteProblem(id: number): void{
+    console.log(id);
+    this.problemService.deleteProblem(id).subscribe(response => {
+      this.getProblem();
+    })
   }
 }
