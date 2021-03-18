@@ -11,6 +11,7 @@ import { MaintenanceOrdersComponent } from './maintenance-orders/maintenance-ord
 import { PrincipalComponent } from './principal/principal.component';
 import { ProblemViewComponent } from './problem-view/problem-view.component';
 import { ProfileViewComponent } from './profile-view/profile-view.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 const routes: Routes = [
@@ -29,7 +30,8 @@ const routes: Routes = [
     {path: 'profile', component:ProfileViewComponent},
     {path: 'problems', component:ProblemViewComponent},
     {path: 'maintenance-detail', component:MaintenanceDetailComponent},
-    {path: 'equipment-detail', component:EquipmentDetailComponent}
+    {path: 'equipment-detail', component:EquipmentDetailComponent},
+    {path: 'edit-profile', component:ProfileComponent}
     ]
   },
   {path: '**', redirectTo:'/principal', pathMatch: 'full'}

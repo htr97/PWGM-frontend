@@ -1,0 +1,69 @@
+<!-- <form [formGroup]="profileForm" (ngSubmit)=""> -->
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+  <h1 class="mat-h1" name="invName">Editar perfil</h1>
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <!-- <mat-card-title>Shipping Information</mat-card-title> -->
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width-select">
+            <mat-label>Nombre</mat-label>
+            <input matInput placeholder="Sam" formControlName="firstName">
+            <mat-error *ngIf="profileForm.controls['firstName'].hasError('required')">
+              Ingrese nombre del <strong>usuario</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width-select">
+            <mat-label>Apellido</mat-label>
+            <input matInput placeholder="Reyes" formControlName="lastName">
+            <mat-error *ngIf="profileForm.controls['lastName'].hasError('required')">
+              Ingrese apellido del <strong>usuario</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Fecha de nacimiento</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="birthDate">
+            <mat-datepicker-toggle matSuffix [for]="picker">
+              <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+            </mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="profileForm.controls['birthDate'].hasError('required')">
+              Seleccione <strong>fecha de nacimiento</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width-select">
+            <mat-label>Teléfono</mat-label>
+            <input matInput placeholder="+50498765432" formControlName="telephone">
+            <mat-error *ngIf="profileForm.controls['telephone'].hasError('required')">
+              Ingrese número del <strong>teléfono</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width-select">
+            <mat-label>País</mat-label>
+            <input matInput placeholder="Honduras" formControlName="country">
+            <mat-error *ngIf="profileForm.controls['country'].hasError('required')">
+              Ingrese <strong>país</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <button mat-raised-button color="primary" type="submit" >Aceptar</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

@@ -38,6 +38,7 @@ import { ProblemViewComponent } from './problem-view/problem-view.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MaintenanceDetailComponent } from './maintenance-detail/maintenance-detail.component';
 import { EquipmentDetailComponent } from './equipment-detail/equipment-detail.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { EquipmentDetailComponent } from './equipment-detail/equipment-detail.co
     ProblemFormComponent,
     ProblemViewComponent,
     MaintenanceDetailComponent,
-    EquipmentDetailComponent
+    EquipmentDetailComponent,
+    ProfileComponent
   ],
   entryComponents:[ProblemFormComponent, MaintenanceDetailComponent,EquipmentDetailComponent],
   imports: [
