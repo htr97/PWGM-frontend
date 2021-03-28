@@ -15,6 +15,7 @@ import { ProblemService } from '../services/problem.service';
   templateUrl: './problem-view.component.html',
   styleUrls: ['./problem-view.component.css']
 })
+
 export class ProblemViewComponent implements OnInit {
   baseUrl = environment.apiUrl;
   user: User;

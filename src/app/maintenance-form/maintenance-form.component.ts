@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { link } from 'node:fs';
 import { take } from 'rxjs/operators';
 import { Maintenance } from '../models/maintenance';
 import { User } from '../models/user';
@@ -33,7 +35,7 @@ export class MaintenanceFormComponent implements OnInit{
 
 
   constructor(private fb: FormBuilder, private accountService: AccountService, private problemService: ProblemService,
-    private equipmentService: EquipmentService, private maintenanceService: MaintenanceService) {
+    private equipmentService: EquipmentService, private maintenanceService: MaintenanceService, private router: Router ) {
     this.accountService.currentUser$.pipe(take(1)).subscribe(user => this.user = user);
   }
 
@@ -63,6 +65,7 @@ export class MaintenanceFormComponent implements OnInit{
         console.log(response);
         this.maintenanceForm.reset();
         alert('Datos almacenados');
+        this.router.navigateByUrl('/maintenance-orders');
       }, error =>
       {
         console.log(error);

@@ -39,6 +39,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MaintenanceDetailComponent } from './maintenance-detail/maintenance-detail.component';
 import { EquipmentDetailComponent } from './equipment-detail/equipment-detail.component';
 import { ProfileComponent } from './profile/profile.component';
+import { MaintenancesChartComponent } from './principal/maintenances-chart/maintenances-chart.component';
+import { PMaintenanceChartComponent } from './principal/p-maintenance-chart/p-maintenance-chart.component';
+import { CMaintenanceChartComponent } from './principal/c-maintenance-chart/c-maintenance-chart.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +57,10 @@ import { ProfileComponent } from './profile/profile.component';
     ProblemViewComponent,
     MaintenanceDetailComponent,
     EquipmentDetailComponent,
-    ProfileComponent
+    ProfileComponent,
+    MaintenancesChartComponent,
+    PMaintenanceChartComponent,
+    CMaintenanceChartComponent
   ],
   entryComponents:[ProblemFormComponent, MaintenanceDetailComponent,EquipmentDetailComponent],
   imports: [

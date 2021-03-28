@@ -2,6 +2,7 @@ import { formatCurrency } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatInput } from '@angular/material/input';
+import { Router } from '@angular/router';
 import { take } from 'rxjs/operators';
 import { Equipment } from '../models/equipment';
 import { Uinfo } from '../models/uinfo';
@@ -31,7 +32,8 @@ export class InventoryFormComponent {
   user: User;
   uEmail: string;
 
-  constructor(private fb: FormBuilder, private equipmentService: EquipmentService, private accountService: AccountService) {
+  constructor(private fb: FormBuilder, private equipmentService: EquipmentService,
+    private accountService: AccountService, private router: Router) {
     this.accountService.currentUser$.pipe(take(1)).subscribe(user => this.user = user);
   }
 
@@ -58,6 +60,7 @@ export class InventoryFormComponent {
         console.log(response);
         this.inventoryForm.reset();
         alert('Datos almacenados');
+        this.router.navigateByUrl('/inventory');
       }, error =>
       {
         console.log(error);
