@@ -1,5 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FullCalendarModule } from '@fullcalendar/angular'; // the main connector. must go first
+import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin
+import interactionPlugin from '@fullcalendar/interaction'; // a plugin
 
 import {MatDatepickerModule} from '@angular/material/datepicker'
 import { MatNativeDateModule } from '@angular/material/core';
@@ -29,8 +32,8 @@ import { MatRadioModule } from '@angular/material/radio';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaintenanceFormComponent } from './maintenance-form/maintenance-form.component';
 import { MaintenanceOrdersComponent } from './maintenance-orders/maintenance-orders.component';
-
-import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { ProfileViewComponent } from './profile-view/profile-view.component';
 import { ProblemFormComponent } from './problem-form/problem-form.component';
@@ -42,6 +45,16 @@ import { ProfileComponent } from './profile/profile.component';
 import { MaintenancesChartComponent } from './principal/maintenances-chart/maintenances-chart.component';
 import { PMaintenanceChartComponent } from './principal/p-maintenance-chart/p-maintenance-chart.component';
 import { CMaintenanceChartComponent } from './principal/c-maintenance-chart/c-maintenance-chart.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { LoaderInterceptorService } from './services/loader-interceptor.service';
+import { MaintenanceCalendarComponent } from './maintenance-calendar/maintenance-calendar.component';
+import { PaymentViewComponent } from './payment-view/payment-view.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+
+FullCalendarModule.registerPlugins([ // register FullCalendar plugins
+  dayGridPlugin,
+  interactionPlugin
+]);
 
 @NgModule({
   declarations: [
@@ -60,7 +73,9 @@ import { CMaintenanceChartComponent } from './principal/c-maintenance-chart/c-ma
     ProfileComponent,
     MaintenancesChartComponent,
     PMaintenanceChartComponent,
-    CMaintenanceChartComponent
+    CMaintenanceChartComponent,
+    MaintenanceCalendarComponent,
+    PaymentViewComponent
   ],
   entryComponents:[ProblemFormComponent, MaintenanceDetailComponent,EquipmentDetailComponent],
   imports: [
@@ -86,10 +101,15 @@ import { CMaintenanceChartComponent } from './principal/c-maintenance-chart/c-ma
     MatSelectModule,
     MatRadioModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSnackBarModule,
+    MatProgressBarModule,
+    FullCalendarModule,
+    MatCheckboxModule
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptorService, multi: true}
   ],
   bootstrap: [AppComponent]
 })

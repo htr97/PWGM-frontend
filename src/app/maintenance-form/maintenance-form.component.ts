@@ -9,6 +9,7 @@ import { AccountService } from '../services/account.service';
 import { EquipmentService } from '../services/equipment.service';
 import { MaintenanceService } from '../services/maintenance.service';
 import { ProblemService } from '../services/problem.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-maintenance-form',
@@ -35,7 +36,8 @@ export class MaintenanceFormComponent implements OnInit{
 
 
   constructor(private fb: FormBuilder, private accountService: AccountService, private problemService: ProblemService,
-    private equipmentService: EquipmentService, private maintenanceService: MaintenanceService, private router: Router ) {
+    private equipmentService: EquipmentService, private maintenanceService: MaintenanceService, private router: Router,
+    private _snackBar: MatSnackBar ) {
     this.accountService.currentUser$.pipe(take(1)).subscribe(user => this.user = user);
   }
 
@@ -58,13 +60,13 @@ export class MaintenanceFormComponent implements OnInit{
     console.log(maintenance);
 
     if(this.maintenanceForm.invalid){
-      console.log('Formulario invalido');
+      this._snackBar.open("Formulario incompleto", "Ok", { duration: 2000 });
     }
     this.maintenanceService.PostMaintenance(maintenance).subscribe(response =>
       {
         console.log(response);
         this.maintenanceForm.reset();
-        alert('Datos almacenados');
+        this._snackBar.open("Datos almacenados", "Ok", { duration: 2000 });
         this.router.navigateByUrl('/maintenance-orders');
       }, error =>
       {

@@ -8,6 +8,7 @@ import { Problem } from '../models/problem';
 import { User } from '../models/user';
 import { AccountService } from '../services/account.service';
 import { ProblemService } from '../services/problem.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-problem-form',
@@ -23,7 +24,7 @@ export class ProblemFormComponent {
   user: User;
 
   constructor(public dialog: MatDialog, private fb: FormBuilder, private accountService: AccountService,
-    private problemService: ProblemService) {
+    private problemService: ProblemService, private _snackBar: MatSnackBar) {
       this.accountService.currentUser$.pipe(take(1)).subscribe(user => this.user = user);
     }
 
@@ -39,7 +40,7 @@ export class ProblemFormComponent {
     }
 
     if(this.problemForm.invalid){
-      alert('Llenar todos los campos');
+      this._snackBar.open('Formulario incompleto','Aceptar',{duration: 2000});
       return
     }
 
@@ -47,7 +48,7 @@ export class ProblemFormComponent {
       {
         console.log(problem);
         this.problemForm.reset();
-        alert('Datos almacenados');
+        this._snackBar.open('Datos almacenados','Aceptar',{duration: 2000});
         this.dialog.closeAll();
       }, error =>
       {

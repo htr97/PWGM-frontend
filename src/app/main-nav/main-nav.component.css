@@ -42,3 +42,9 @@ mat-icon{
   max-width: 10% !important;
   margin-right: 17% !important;
 }
+
+.loader-container{
+  position: fixed;
+  width: 100%;
+  z-index: 99;
+}

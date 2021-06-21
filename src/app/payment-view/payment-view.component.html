@@ -1,0 +1,92 @@
+<div class="grid-container">
+  <h1 class="mat-h1" name="invName">Información de pago</h1>
+  <div class="row">
+    <div class="col">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="row">
+            <div class="col">
+              <p>Monto </p>
+              <div class="full-width"  align="left">
+                <br><br>
+                <mat-label style="font-size: 15px; color:#666363; font-weight: bold;">Monto</mat-label>
+                <mat-label style="font-size: 15px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; L. {{monto}}</mat-label>
+                <br>
+                <br>
+                <br>
+                <mat-label style="font-size: 15px; color:#666363; font-weight: bold;">Sobtotal</mat-label>
+                <mat-label style="font-size: 15px;">&nbsp;&nbsp;&nbsp;&nbsp; L. {{monto}}</mat-label>
+                <br>
+                <br>
+                <br>
+                <mat-label style="font-size: 15px; color:#666363; font-weight: bold;">Impuesto</mat-label>
+                <mat-label style="font-size: 15px;">&nbsp;&nbsp; L. {{imp}}</mat-label>
+                <!-- <span matPrefix>L. &nbsp;</span>
+                <input matInput disabled value="100"> -->
+              <!-- </mat-form-field> -->
+              </div>
+            </div>
+            <div class="col">
+              <p>Información de tarjeta</p>
+              <form [formGroup]="formdata" >
+                <mat-form-field class="full-width">
+                  <mat-label>Número de tarjeta</mat-label>
+                  <!-- <span matPrefix>L &nbsp;</span> -->
+                  <input matInput value="" formControlName="tar">
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                  <mat-label>Vencimiento</mat-label>
+                  <input matInput maxlength='5' placeholder="MM-AA" formControlName="venc">
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                  <mat-label>CVV</mat-label>
+                  <input matInput maxlength='3' placeholder="000" formControlName="cvv">
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                  <mat-label>Nombre y apellido</mat-label>
+                  <input matInput placeholder="" formControlName="nom">
+                </mat-form-field>
+              </form>
+            </div>
+          </div>
+          <br>
+            <mat-label style="font-size: 25px; color:#666363;"><b>Total: L. {{monto}}</b></mat-label>
+          <br>
+          <br>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" [disabled]="clicked" (click)="onSubmit(); clicked = true;">PAGAR AQUÍ</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+
+    <div class="col">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+        </mat-card-header>
+        <img mat-card-image src="data:image/png;base64,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" >
+        <mat-card-content>
+          <p>
+            Realiza tus pagos de forma segura con <b>Pixel Pay</b>
+          </p>
+          <div class="img">
+            <h6>&nbsp;</h6>
+            <img src="https://www.pixel.hn/themes/pixelpay-theme/assets/images/_footer/amazonws-logo.png" alt="" width="120" height="70">
+            <img src="https://www.pixel.hn/themes/pixelpay-theme/assets/images/_footer/visa.png" alt=""  width="80" height="70">
+            <img src="https://www.pixel.hn/themes/pixelpay-theme/assets/images/_footer/mastercard.png" alt=""  width="80" height="70">
+            <img src="https://www.pixel.hn/themes/pixelpay-theme/assets/images/_footer/3d-secure.png" alt="" width="80" height="70">
+            <img src="https://www.pixel.hn/themes/pixelpay-theme/assets/images/_footer/dss.png" alt="" width="80" height="70">
+        </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+  </div>
+</div>
+
+
+

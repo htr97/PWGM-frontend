@@ -5,9 +5,11 @@ import { EquipmentDetailComponent } from './equipment-detail/equipment-detail.co
 import { AuthGuard } from './guards/auth.guard';
 import { InventoryFormComponent } from './inventory-form/inventory-form.component';
 import { InventoryViewComponent } from './inventory-view/inventory-view.component';
+import { MaintenanceCalendarComponent } from './maintenance-calendar/maintenance-calendar.component';
 import { MaintenanceDetailComponent } from './maintenance-detail/maintenance-detail.component';
 import { MaintenanceFormComponent } from './maintenance-form/maintenance-form.component';
 import { MaintenanceOrdersComponent } from './maintenance-orders/maintenance-orders.component';
+import { PaymentViewComponent } from './payment-view/payment-view.component';
 import { PrincipalComponent } from './principal/principal.component';
 import { ProblemViewComponent } from './problem-view/problem-view.component';
 import { ProfileViewComponent } from './profile-view/profile-view.component';
@@ -31,7 +33,9 @@ const routes: Routes = [
     {path: 'problems', component:ProblemViewComponent},
     {path: 'maintenance-detail', component:MaintenanceDetailComponent},
     {path: 'equipment-detail', component:EquipmentDetailComponent},
-    {path: 'edit-profile', component:ProfileComponent}
+    {path: 'edit-profile', component:ProfileComponent},
+    {path: 'maintenance-calendar', component:MaintenanceCalendarComponent},
+    {path: 'payment-view', component:PaymentViewComponent}
     ]
   },
   {path: '**', redirectTo:'/principal', pathMatch: 'full'}

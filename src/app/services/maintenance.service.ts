@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { GetMaintenance } from '../models/get-maintenance';
 import { Maintenance } from '../models/maintenance';
+import { MaintenanceDates } from '../models/maintenance-dates';
 import { MaintenanceDetail } from '../models/maintenance-detail';
 import { MaintenanceResume } from '../models/maintenance-resume';
 import { MaintenanceTypeResume } from '../models/maintenancetype-resume';
@@ -40,6 +41,10 @@ export class MaintenanceService {
 
   GetMaintenancePResume(email: string){
     return this.http.get<MaintenanceTypeResume[]>(this.baseUrl+'Maintenance/preventive/'+ email);
+  }
+
+  GetMaintenanceDates(email: string){
+    return this.http.get<MaintenanceDates[]>(this.baseUrl+'Maintenance/mdates/'+ email);
   }
 
   deleteMaintenance(id: number){

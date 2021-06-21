@@ -4,6 +4,7 @@ import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { GetEquipment } from '../models/get-equipment';
 import { EquipmentService } from '../services/equipment.service';
 import { UbicationService } from '../services/ubication.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-equipment-detail',
@@ -31,7 +32,7 @@ export class EquipmentDetailComponent implements OnInit {
   ubications = [];
 
   constructor(public dialog: MatDialog, private fb: FormBuilder, private equipmentService: EquipmentService,
-    private ubicationService: UbicationService, @Inject(MAT_DIALOG_DATA) data) {
+    private ubicationService: UbicationService, private _snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) data) {
       this.equipmentId = data.id;
       this.userEmail = data.email;
     }
@@ -88,14 +89,14 @@ export class EquipmentDetailComponent implements OnInit {
     }
 
     if(this.inventoryForm.invalid){
-      console.log('Invalid form');
+      this._snackBar.open("Formulario incompleto", "Ok", { duration: 2000 });
       return;
     }
     this.equipmentService.UpdateEquipment(equipment).subscribe(response =>
       {
         console.log(response);
         this.inventoryForm.reset();
-        alert('Datos almacenados');
+        this._snackBar.open('Datos almacenados','Aceptar',{duration: 2000});
         this.onNoClick();
       }, error =>
       {

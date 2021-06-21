@@ -45,8 +45,16 @@ body {
   border-radius: 15px;
 }
 
-.container{
+.container-auth{
   background-image:url("C:\Users\heytu\Documents\Universidad\PWGM\PWGM-frontend\src\image\login-img2.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.container{
   background-attachment: fixed;
   background-position: center;
   background-size: cover;

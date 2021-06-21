@@ -9,4 +9,5 @@ export interface Equipment {
   observation: string;
   ubication: string;
   userEmail: string;
+  garantia: number;
 }

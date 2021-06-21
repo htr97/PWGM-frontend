@@ -7,6 +7,7 @@ import { User } from '../models/user';
 import { AccountService } from '../services/account.service';
 import { MaintenanceService } from '../services/maintenance.service';
 import { ProblemService } from '../services/problem.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-maintenance-detail',
@@ -32,7 +33,7 @@ export class MaintenanceDetailComponent implements OnInit {
   user: User;
 
   constructor(private fb: FormBuilder, public dialog: MatDialog, private problemService: ProblemService,
-    private maintenanceService: MaintenanceService, @Inject(MAT_DIALOG_DATA) data) {
+    private maintenanceService: MaintenanceService, private _snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) data) {
       //this.accountService.currentUser$.pipe(take(1)).subscribe(user => this.user = user);
       this.maintenanceId = data.id;
       this.userEmail = data.email;
@@ -77,7 +78,7 @@ export class MaintenanceDetailComponent implements OnInit {
     }
 
     if(this.maintenanceForm.invalid){
-      alert('Favor llenar todos los campos');
+      this._snackBar.open("Formulario incompleto", "Ok", { duration: 2000 });
       return;
     }
 
@@ -86,7 +87,7 @@ export class MaintenanceDetailComponent implements OnInit {
       {
         console.log(response);
         this.maintenanceForm.reset();
-        alert('Datos almacenados');
+        this._snackBar.open("Datos almacenados", "Ok", { duration: 2000 });
         this.onNoClick();
       }, error =>
       {

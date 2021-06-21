@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { AccountService } from 'src/app/services/account.service';
 import { Uinfo } from '../models/uinfo';
+import { LoaderService } from '../services/loader.service';
 
 @Component({
   selector: 'app-main-nav',
@@ -20,7 +21,8 @@ export class MainNavComponent implements OnInit{
     );
 
 
-  constructor(private breakpointObserver: BreakpointObserver,public accountService: AccountService) {}
+  constructor(private breakpointObserver: BreakpointObserver,public accountService: AccountService,
+    public loaderService: LoaderService) {}
 
   ngOnInit():void{
   }

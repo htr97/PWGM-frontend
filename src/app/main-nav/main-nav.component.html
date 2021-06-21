@@ -15,24 +15,36 @@
       <a mat-list-item routerLink="/inventory" routerLinkActive='active'>
         <mat-icon matPrefix >devices</mat-icon>&nbsp;Revisar equipos
       </a>
+      <a mat-list-item routerLink="/problems" routerLinkActive='active'>
+        <mat-icon matPrefix >bug_report</mat-icon>&nbsp;Problemas
+      </a>
       <a mat-list-item routerLink="/add-maintenance" routerLinkActive='active'>
         <mat-icon matPrefix >build</mat-icon>&nbsp;Ingresar mantenimiento
       </a>
       <a mat-list-item routerLink ="/maintenance-orders" routerLinkActive='active'>
         <mat-icon matPrefix >engineering</mat-icon>&nbsp;Ordenes de trabajo
       </a>
-      <a mat-list-item routerLink="/problems" routerLinkActive='active'>
-        <mat-icon matPrefix >bug_report</mat-icon>&nbsp;Problemas
+      <a mat-list-item routerLink ="/maintenance-calendar" routerLinkActive='active'>
+        <mat-icon matPrefix >event</mat-icon>&nbsp;Calendario de mantenimiento
       </a>
+      <a mat-list-item routerLink ="/payment-view" routerLinkActive='active'>
+        <mat-icon matPrefix >paid</mat-icon>&nbsp;Pagos
+      </a>
+
       <!-- <a mat-list-item routerLink ="/maintenance-orders" routerLinkActive='active'>
         <mat-icon matPrefix >engineering</mat-icon>&nbsp;Ordenes de trabajo
       </a> -->
-      <a mat-list-item href="" >
+      <!-- <a mat-list-item href="" >
         <mat-icon matPrefix >feed</mat-icon>&nbsp;Reportes
-      </a>
+      </a> -->
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content >
+
+    <div *ngIf="loaderService.isLoading | async" clas="loader-container">
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </div>
+
     <mat-toolbar color="warm">
       <button
         type="button"

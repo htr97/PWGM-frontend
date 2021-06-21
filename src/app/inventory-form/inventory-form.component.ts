@@ -9,6 +9,7 @@ import { Uinfo } from '../models/uinfo';
 import { User } from '../models/user';
 import { AccountService } from '../services/account.service';
 import { EquipmentService } from '../services/equipment.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-inventory-form',
@@ -26,6 +27,7 @@ export class InventoryFormComponent {
     StorageCap: [null, Validators.required],
     StorageType: [null, Validators.required],
     Ubication : [null, Validators.required],
+    Garantia : [null, Validators.required],
     Observation:null
   });
 
@@ -33,7 +35,7 @@ export class InventoryFormComponent {
   uEmail: string;
 
   constructor(private fb: FormBuilder, private equipmentService: EquipmentService,
-    private accountService: AccountService, private router: Router) {
+    private accountService: AccountService, private router: Router, private _snackBar: MatSnackBar) {
     this.accountService.currentUser$.pipe(take(1)).subscribe(user => this.user = user);
   }
 
@@ -48,18 +50,19 @@ export class InventoryFormComponent {
       storageType: this.inventoryForm.get('StorageType').value,
       ubication: this.inventoryForm.get('Ubication').value,
       observation: this.inventoryForm.get('Observation').value,
+      garantia : this.inventoryForm.get('Garantia').value,
       userEmail: this.user.email
     }
 
     if(this.inventoryForm.invalid){
-      console.log('Invalid form');
+      this._snackBar.open("Formulario incompleto", "Ok", { duration: 2000 });
       return;
     }
     this.equipmentService.PostEquipment(equipment).subscribe(response =>
       {
         console.log(response);
         this.inventoryForm.reset();
-        alert('Datos almacenados');
+        this._snackBar.open("Datos almacenados", "Ok", { duration: 2000 });
         this.router.navigateByUrl('/inventory');
       }, error =>
       {
